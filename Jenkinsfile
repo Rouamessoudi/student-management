@@ -6,10 +6,11 @@ pipeline {
      * - Maven : doit exister dans "Manage Jenkins > Global Tool Configuration"
      * - JDK   : pareil
      ***********************************************/
-    tools {
-        maven 'Maven'      // nom configuré dans Jenkins (ex : "Maven", "Maven_3_9"...)
-        jdk   'JDK17'      // nom du JDK (ex : "JDK17", "java-17"...)
-    }
+   tools {
+    maven 'M2_HOME'
+    jdk   'JAVA_HOME'
+}
+
 
     environment {
         DOCKER_IMAGE = "rouamessoudi/student-management:1.0"
