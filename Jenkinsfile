@@ -37,16 +37,20 @@ pipeline {
         }
 
         stage('Docker Build & Push') {
-            steps {
-                sh '''
-                    echo "=== Docker build ==="
-                    docker build -t $DOCKER_IMAGE .
+  steps {
+    withEnv(["PATH+MAVEN=${tool 'Maven_3_9'}/bin", "JAVA_HOME=${tool 'JDK17'}"]) {
+      script {
+        sh """
+          echo "=== Docker build ==="
+          docker build -t rouamessaoudi/student-management:1.0 .
+          echo "=== Docker push ==="
+          docker push rouamessaoudi/student-management:1.0
+        """
+      }
+    }
+  }
+}
 
-                    echo "=== Docker push ==="
-                    docker push $DOCKER_IMAGE
-                '''
-            }
-        }
 
         stage('Kubernetes Deploy') {
             steps {
