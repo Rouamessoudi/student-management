@@ -12,7 +12,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_IMAGE = "rouamessaoudi/student-management:1.0"
+        DOCKER_IMAGE = "rouamessoudi/student-management:1.0"
         KUBE_NAMESPACE = "default"   // tu peux mettre "devops" si tu utilises ce namespace
     }
 
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Récupérer le code depuis GitHub
                 git branch: 'main',
-                    url: 'https://github.com/Rouamessaoudi/student-management.git'
+                    url: 'https://github.com/Rouamessoudi/student-management.git'
             }
         }
 
