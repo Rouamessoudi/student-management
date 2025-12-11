@@ -49,7 +49,16 @@ pipeline {
       }
     }
   }
-}
+}    stage('Docker Build & Push') {
+        steps {
+            sh 'echo "=== Docker build ==="'
+            sh 'docker build -t rouamessoudi/student-management:1.0 .'
+
+            sh 'echo "=== Docker push ==="'
+            sh 'docker push rouamessoudi/student-management:1.0'
+        }
+    }
+
 
 
         stage('Kubernetes Deploy') {
